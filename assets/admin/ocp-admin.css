@@ -1,0 +1,49 @@
+/* ICON MODAL CSS */
+.ocp-icon {
+	display: inline-block;
+	width: 25%;
+	font-size: 16px;
+}
+.ocp-icon > a {
+	display: inline-block;
+	margin: 10px 5px 0 0;
+	font-size: 11px;
+	color: #000000;
+	text-decoration: none;
+}
+.ocp-icon > a:hover {
+	color: #2EA2CC;
+}
+.ocp-icon > a > i {
+	font-size: 24px;
+	vertical-align: middle;
+}
+.acf-input-wrap>i.fa {
+	font-size: 24px;
+	margin: 0 10px 0 5px;
+}
+
+/* FOOTER OPTIONS CSS */
+tr[data-name="footer_widgets"] .layout .acf-field:before,
+tr[data-name="footer_widgets"] .layout .acf-field:after {
+	display: table;
+	content: " ";
+}
+tr[data-name="footer_widgets"] .layout .acf-field:after {
+	clear: both;
+}
+tr[data-name="footer_widgets"] .layout .acf-label {
+	width: 100px;
+	text-align: right;
+	float: left;
+}
+tr[data-name="footer_widgets"] .layout .acf-input {
+	padding-left: 120px;
+}
+
+/* WIDGETS CSS */
+#layout-mini_blocks .acf-input-table > tbody > tr{
+	display: block;
+	float: left;
+	width: 25%;
+}
