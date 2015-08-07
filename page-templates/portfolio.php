@@ -46,6 +46,8 @@ if(have_posts()) the_post();
 			break;
 	}
 ?>
+
+	<?php get_template_part('parts/loop', 'title'); ?>
 	<!--=== Cube-Portfdlio ===-->
     <div class="cube-portfolio<?php echo $cube_class; ?>">
         <div class="content-xs">

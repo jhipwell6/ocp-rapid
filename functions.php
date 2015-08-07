@@ -77,7 +77,7 @@ function ocp_add_editor_styles() {
 add_action( 'admin_init', 'ocp_add_editor_styles' );
 
 /*** Enqueue scripts and styles ***/
-function _base_scripts() {
+function ocp_base_scripts() {
 
     // global styles
 	wp_enqueue_style( 'font-open-sans', 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin', array(), '' );
@@ -87,7 +87,6 @@ function _base_scripts() {
     wp_enqueue_style( 'line-icons', get_template_directory_uri().'/assets/plugins/line-icons/line-icons.css', array(), '' );
     wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/assets/plugins/font-awesome/css/font-awesome.min.css', array(), '' );
     wp_enqueue_style( 'custom-style', get_template_directory_uri().'/assets/css/custom.css', array(), '' );
-	wp_enqueue_style( 'custom-colors', get_template_directory_uri().'/assets/css/color.css', array(), '' );
     
     // global scripts
     wp_enqueue_script( 'jquery' );
@@ -99,7 +98,12 @@ function _base_scripts() {
 	wp_enqueue_script( 'app', get_template_directory_uri().'/assets/js/app.js', array(), '', true );
     
 }
-add_action( 'wp_enqueue_scripts', '_base_scripts' );
+add_action( 'wp_enqueue_scripts', 'ocp_base_scripts' );
+
+function ocp_base_color_style() {
+	wp_enqueue_style( 'custom-colors', get_template_directory_uri().'/assets/css/color.css', array(), '' );
+}
+add_action( 'wp_enqueue_scripts', 'ocp_base_color_style', 99 );
 
 function ocp_essential_scripts() {
 	$scripts = "App.init();\n";
@@ -200,3 +204,108 @@ function ocp_acf_checked_list( $value, $post_id, $field ) {
 	return $value;
 }
 add_filter('acf/format_value/type=wysiwyg', 'ocp_acf_checked_list', 10, 3);
+
+if( function_exists('acf_add_local_field_group') && get_field('page_title_breadcrumbs', 'option') == 'image' ) :
+acf_add_local_field_group(array (
+	'key' => 'group_55c43fcde014a',
+	'title' => 'Page Title',
+	'fields' => array (
+		array (
+			'key' => 'field_55c440378d26f',
+			'label' => 'Banner Image',
+			'name' => 'banner_image',
+			'type' => 'image',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'url',
+			'preview_size' => 'thumbnail',
+			'library' => 'all',
+			'min_width' => '',
+			'min_height' => '',
+			'min_size' => '',
+			'max_width' => '',
+			'max_height' => '',
+			'max_size' => '',
+			'mime_types' => '',
+		),
+		array (
+			'key' => 'field_55c440528d270',
+			'label' => 'Banner Title',
+			'name' => 'banner_title',
+			'type' => 'text',
+			'instructions' => 'overrides page title',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+			'readonly' => 0,
+			'disabled' => 0,
+		),
+		array (
+			'key' => 'field_55c4406c8d271',
+			'label' => 'Banner Sub Title',
+			'name' => 'banner_sub_title',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+			'readonly' => 0,
+			'disabled' => 0,
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'page',
+			),
+		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'post',
+			),
+		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'portfolio',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'acf_after_title',
+	'style' => 'default',
+	'label_placement' => 'left',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+));
+
+endif;

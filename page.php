@@ -1,13 +1,10 @@
 <?php
 get_header();
-if(have_posts())
+if(have_posts()) the_post();
+
+	get_template_part('parts/loop', 'title');
+
+	get_template_part('parts/page/page', 'widgets');
+	
+get_footer();	
 ?>
-<div class="section">
-	<div class="container">
-        <?php while(have_posts()) : the_post(); ?>
-        <h3><?php the_title(); ?></h3>
-        <?php the_content(); ?>
-        <?php endwhile; ?>
-    </div>
-</div>
-<?php get_footer(); ?>

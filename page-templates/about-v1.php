@@ -5,14 +5,7 @@
 get_header();
 if(have_posts()) the_post();
 ?>
-    <!--=== Breadcrumbs v3 ===-->
-	<div class="breadcrumbs-v3 img-v3 text-center" style="background-image:url(<?php the_field('banner_image'); ?>);">
-        <div class="container">
-            <h1><?php ocp_title(get_field('banner_title')); ?></h1>
-			<?php the_conditional_field('banner_sub_title', '<p>', '</p>'); ?>
-        </div>
-    </div>
-    <!--=== End Breadcrumbs v3 ===-->
+	<?php get_template_part('parts/loop', 'title'); ?>
 
     <!--=== Container Part ===-->
     <div class="container content-sm">

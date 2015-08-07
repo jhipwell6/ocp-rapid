@@ -33,10 +33,21 @@ function ocp_template_scripts() {
 	}
 	
 	// template specific
-	if(is_home()) {
+	if(is_front_page()) {
 		wp_enqueue_style( 'fancybox-pack', get_template_directory_uri().'/assets/plugins/fancybox/source/jquery.fancybox.css', array(), '' );
 		wp_enqueue_script( 'fancybox-pack-js', get_template_directory_uri().'/assets/plugins/fancybox/source/jquery.fancybox.pack.js', array(), '', true );
 		wp_enqueue_script( 'fancybox-custom-js', get_template_directory_uri().'/assets/js/plugins/fancy-box.js', array(), '', true );
+	}
+	
+	if(is_home() || is_archive()) {
+		$style = get_field('style', get_option('page_for_posts'));
+		if($style == 'timeline') {
+			wp_enqueue_style( 'timeline1', get_template_directory_uri().'/assets/css/pages/shortcode_timeline1.css', array(), '' );
+		} elseif($style == 'masonry') {
+			wp_enqueue_style( 'blog-masonry', get_template_directory_uri().'/assets/css/pages/blog_masonry_3col.css', array(), '' );
+			wp_enqueue_script( 'masonry-init', get_template_directory_uri().'/assets/plugins/masonry/jquery.masonry.min.js', array(), '', true );
+			wp_enqueue_script( 'blog-masonry', get_template_directory_uri().'/assets/js/pages/blog-masonry.js', array(), '', true );
+		}
 	}
 	
 	if(is_404()){

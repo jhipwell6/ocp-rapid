@@ -163,7 +163,7 @@ a.read-more:hover {
 @media (max-width: 991px) {
 	.header .navbar-nav > .active > a,
 	.header .navbar-nav > .active > a:hover,
-	.header .navbar-nav > .active > a:focus {
+	.header .navbar-nav > .active > a:focus	{
 	  background:  <?php echo $primary_color; ?>;
 	  color: #fff !important;
 	}
@@ -172,6 +172,13 @@ a.read-more:hover {
 	}
 	.header .nav > li > .search:hover {
 	  background:  <?php echo $primary_color; ?>;
+	}
+	.header.header-dark .navbar-nav .dropdown > a:hover {
+	  color: <?php echo $primary_color; ?>
+	}
+	.header.header-dark .navbar-nav > li > a:hover,
+	.header.header-dark .navbar-nav > .active > a {
+	  color: <?php echo $primary_color; ?> !important;
 	}
 }
 
@@ -204,6 +211,9 @@ a.read-more:hover {
 }
 .header-v1 .navbar-toggle:hover {
   background:  <?php echo $darker_color; ?> !important;
+}
+.header-v1 .topbar-v1 .top-v1-data li a:hover i {
+  color: <?php echo $primary_color; ?>;
 }
 
 /* Design for max-width: 991px */
@@ -707,7 +717,9 @@ blockquote.hero.hero-default:hover {
 /* Breadcrumb
 ------------------------------------*/
 .breadcrumb li.active,
-.breadcrumb li a:hover {
+.breadcrumb li a:hover,
+.breadcrumb a:hover,
+.breadcrumb .breadcrumb_last {
 	color:<?php echo $primary_color; ?>;
 }
 
@@ -749,7 +761,8 @@ blockquote.hero.hero-default:hover {
 	color: <?php echo $primary_color; ?>;
 	border-bottom: solid 1px <?php echo $primary_color; ?>;
 }
-.sorting-block .sorting-grid li a:hover span.sorting-cover {
+.sorting-block .sorting-grid li a:hover span.sorting-cover,
+.sorting-block .sorting-grid li a:hover .sorting-cover {
 	background: <?php echo $primary_color; ?>;
 }
 
@@ -805,10 +818,16 @@ ul.blog-tags a:hover {
 	color: <?php echo $primary_color; ?>;
 }
 
+/* FAQ page
+------------------------------------*/
+.faq-page .new-title {
+	color: <?php echo $primary_color; ?>;
+}
+
 /* Icons Page
 ------------------------------------*/
 .icon-page li:hover { 
-	color:<?php echo $primary_color; ?>;
+	color: <?php echo $primary_color; ?>;
 }
 
 /* Glyphicons */
@@ -844,6 +863,7 @@ ul.blog-tags a:hover {
 }
 
 /* Sidebar Features */
+.magazine-sb-categories ul i,
 .magazine-page h3 a:hover {
 	color: <?php echo $primary_color; ?>;
 }
@@ -1181,6 +1201,9 @@ i.icon-bg-u {
 .profile .profile-post.color-one {
 	border-color: <?php echo $primary_color; ?>;
 }
+.profile .img-post-list li a:hover i {
+	color: <?php echo $primary_color; ?>;
+}
 
 /* Pricing Page
 ------------------------------------*/
@@ -1202,7 +1225,9 @@ i.icon-bg-u {
 .pricing-content li {
 	border-bottom:solid 1px <?php echo $lighter_color; ?>;
 }
-.pricing-content li i {
+.pricing-content li i,
+.pricing-rounded .pricing-content li i,
+.pricing-zoom .pricing-content li i {
 	color:<?php echo $primary_color; ?>;
 }
 
@@ -1588,3 +1613,20 @@ i.icon-bg-u {
 .blog-trending h3 a:hover {
 	color: <?php echo $primary_color; ?> !important;
 }
+
+/* Pricing
+------------------------------------*/
+.pricing-table-v6 .service-block-u,
+.pricing-table-v7.service-block-u,
+.pricing-table-v8.service-block-u,
+.pricing-table-v1 .pricing-v1-green .btn-u {
+	background-color: <?php echo $primary_color; ?> !important;
+}
+.pricing-table-v7.service-block-u .pricing-body i,
+.pricing-table-v8.service-block-u .pricing-body i {
+	color: <?php echo $primary_color; ?>
+}
+.pricing-bg-colored .pricing-content li i {
+	color: <?php echo $primary_color; ?>
+}
+

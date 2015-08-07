@@ -5,14 +5,8 @@
 get_header();
 if(have_posts()) the_post();
 ?>
-    <!--=== Interactive Slider ===-->
-    <div class="breadcrumbs-v3 img-v1 text-center" style="background-image:url(<?php the_field('banner_image'); ?>);">
-        <div class="container">
-            <h1><?php ocp_title(get_field('banner_title')); ?></h1>
-			<?php the_conditional_field('banner_sub_title', '<p>', '</p>'); ?>
-        </div>
-    </div>
-    <!--=== End Interactive Slider ===-->
+
+	<?php get_template_part('parts/loop', 'title'); ?>
 
 	<?php 
 		$intro = get_field('text_intro');

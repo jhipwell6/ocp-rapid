@@ -27,12 +27,19 @@
   padding-right: 0;
   background: none;
   position: relative;
+  color: #ccc;
 }
 .breadcrumb a {
   color: #777;
+  margin-right: 3px;
+}
+.breadcrumb .breadcrumb_last {
+  margin-left: 3px;
 }
 .breadcrumb li.active,
-.breadcrumb li a:hover {
+.breadcrumb li a:hover,
+.breadcrumb a:hover,
+.breadcrumb .breadcrumb_last  {
   color: #72c02c;
   text-decoration: none;
 }

@@ -17,6 +17,15 @@ function link_target($url) {
 }
 
 /*
+ * trim_excerpt()
+ * return ''
+ */
+function trim_excerpt($text) {
+	return rtrim($text,'[&hellip;]');
+}
+add_filter('get_the_excerpt', 'trim_excerpt');
+
+/*
  * the_post_thumbnail_url()
  * echo url
  */
@@ -217,13 +226,27 @@ function portfolio_filter_class($post_id = null, $output = 'slug', $sep = ' ') {
  * ocp_title()
  * echo $title
  */
-function ocp_title() {
-	$title = get_field('title');
-	if(!$title) {
-		echo get_the_title();
-	} else {
-		echo $title;
-	}
+function ocp_title($title = null) {
+	if($title == null) {
+		$title = get_the_title();
+		if(is_home()) {
+			$blog_page = get_option('page_for_posts');
+			$title = get_the_title($blog_page);
+		}
+		if(is_archive()) {
+			$title = single_month_title('', false);
+		}
+		if(is_category()) {
+			$title = single_cat_title('', false);
+		}
+		if(is_tag()) {
+			$title = single_tag_title('', false);
+		}
+		if(is_taxonomy()) {
+			$title = single_term_title('', false);
+		}
+	} 
+	echo $title;
 }
 
 /*
