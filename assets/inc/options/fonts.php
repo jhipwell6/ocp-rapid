@@ -42,7 +42,7 @@ add_filter('acf/load_field/name=site_font', 'ocp_acf_load_font_field_choices');
 function ocp_acf_load_font_scripts() {
 	$screen = get_current_screen();
 	if($screen->id == 'toplevel_page_general-options') {
-		wp_enqueue_style( 'ocp-admin-fonts', get_template_directory_uri().'/assets/admin/fonts.css', array(), '' );
+		wp_enqueue_style( 'ocp-admin-fonts', get_template_directory_uri().'/assets/admin/fonts.php', array(), '' );
 		wp_enqueue_script( 'ocp-admin-fonts', get_template_directory_uri().'/assets/admin/fonts.js', array(), '', true );
 	}
 }
