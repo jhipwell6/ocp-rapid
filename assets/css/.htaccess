@@ -1,7 +1,0 @@
-<FilesMatch "^.*?color.*?$">
-SetHandler application/x-httpd-php5
-</FilesMatch>
-
-#<FilesMatch "^.*?color.*?$">
-#SetHandler php5-script
-#</FilesMatch>

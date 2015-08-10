@@ -101,7 +101,7 @@ function ocp_base_scripts() {
 add_action( 'wp_enqueue_scripts', 'ocp_base_scripts' );
 
 function ocp_base_color_style() {
-	wp_enqueue_style( 'custom-colors', get_template_directory_uri().'/assets/css/color.css', array(), '' );
+	wp_enqueue_style( 'custom-colors', get_template_directory_uri().'/assets/css/color.php', array(), '' );
 }
 add_action( 'wp_enqueue_scripts', 'ocp_base_color_style', 99 );
 
