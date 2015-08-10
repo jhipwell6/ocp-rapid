@@ -103,7 +103,7 @@
                         <?php the_post_thumbnail('feed-thumbs', array('class' => 'img-responsive full-width')); ?>
                         <div class="sorting-cover">
                             <span><?php the_title(); ?></span>
-                            <p><?php echo _post_taxonomies_without_link($post->ID, $cat); ?></p>
+                            <p><?php echo ocp_post_tax_no_link($post->ID, $cat); ?></p>
                         </div>
                     </a>
                 </li>
