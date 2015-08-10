@@ -2,7 +2,7 @@
 	// page title / breadcrumbs
 	$page_title = get_field('page_title_breadcrumbs', 'option');
 	$title = get_the_title();
-	if(is_home()) {
+	if(is_home() || (is_single() && get_post_type() == 'post')) {
 		$blog_page = get_option('page_for_posts');
 		$title = get_the_title($blog_page);
 	}

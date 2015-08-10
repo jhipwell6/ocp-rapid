@@ -94,7 +94,7 @@ function ocp_base_scripts() {
 	wp_enqueue_script( 'top', get_template_directory_uri().'/assets/plugins/back-to-top.js', array(), '', true );
 	wp_enqueue_script( 'smooth-scroll', get_template_directory_uri().'/assets/plugins/smoothScroll.js', array(), '', true );
 	wp_enqueue_script( 'parallax', get_template_directory_uri().'/assets/plugins/jquery.parallax.js', array(), '', true );
-	wp_enqueue_script( 'custom', get_template_directory_uri().'/assets/js/custom.js', array(), '', true );        
+	wp_enqueue_script( 'custom-scripts', get_template_directory_uri().'/assets/js/custom.js', array(), '', true );        
 	wp_enqueue_script( 'app', get_template_directory_uri().'/assets/js/app.js', array(), '', true );
     
 }
@@ -179,19 +179,76 @@ function ie8_support(){
 <?php
 }
 
-function _post_taxonomies($postID, $taxonomy, $location = ''){
-    $terms = get_the_terms( $postID, $taxonomy );
+add_filter( 'comments_open', 'ocp_comments_open', 10, 2 );
+function ocp_comments_open( $open, $post_id ) {
+	$post = get_post( $post_id );
+	return true;
+}
+
+
+
+function ocp_rapid_comment($comment, $args, $depth) {
+	$GLOBALS['comment'] = $comment;
+	extract($args, EXTR_SKIP);
+
+	if ( 'div' == $args['style'] ) {
+		$tag = 'div';
+		$add_below = 'comment';
+	} else {
+		$tag = 'li';
+		$add_below = 'div-comment';
+	}
+	
+	$reply = $depth > 1 ? ' blog-comments-reply' : '';
+	
+?>
+	<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? 'blog-comments margin-bottom-30' . $reply : 'blog-comments margin-bottom-30 parent'  . $reply ) ?> id="comment-<?php comment_ID() ?>">
+	<?php if ( 'div' != $args['style'] ) : ?>
+	<div id="div-comment-<?php comment_ID() ?>" class="comment-body row">
+	<?php endif; ?>
+	
+	<div class="col-sm-2 sm-margin-bottom-40">
+		<?php if ( $args['avatar_size'] != 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+	</div>
+	
+	<div class="col-sm-10">
+		<div class="comments-itself">
+			<?php if ( $comment->comment_approved == '0' ) : ?>
+				<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em>
+				<br />
+			<?php endif; ?>
+			<h4>
+				<?php comment_author(); ?>
+				<span><?php echo time_ago(get_comment_time('U')); ?> / <?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?></span>
+			</h4>
+			<?php comment_text(); ?>
+		</div>
+	</div>
+	<?php if ( 'div' != $args['style'] ) : ?>
+	</div>
+	<?php endif; ?>
+<?php
+}
+
+
+
+function ocp_post_tax($post_id, $taxonomy){
+    $terms = get_the_terms( $post_id, $taxonomy );
     $t = array();
-    foreach ( $terms as $term ) {
-        $t[] = "<a href=\"". get_term_link($term->slug, $taxonomy) ."\">" . $term->name . "</a>";
-    }
+	if($terms) {
+		foreach ( $terms as $term ) {
+			$t[] = "<a href=\"". get_term_link($term->slug, $taxonomy) ."\">" . $term->name . "</a>";
+		}
+	}
     return join( ", ", $t );
 }
-function _post_taxonomies_without_link($postID, $taxonomy, $location = ''){
-    $terms = get_the_terms( $postID, $taxonomy );
+function ocp_post_tax_no_link($post_id, $taxonomy){
+    $terms = get_the_terms( $post_id, $taxonomy );
     $t = array();
-    foreach ( $terms as $term ) {
-        $t[] = $term->name;
+	if($terms) {
+		foreach ( $terms as $term ) {
+			$t[] = $term->name;
+		}
     }
     return join( ", ", $t );
 }

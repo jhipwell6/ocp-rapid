@@ -1,6 +1,18 @@
-			<div class="col-md-3">
-				<?php dynamic_sidebar('sidebar-1'); ?>
-				<?php /* ?>
+			<?php
+				$sidebar = get_field('sidebar', get_option('page_for_posts'));
+				switch($sidebar) {
+					case 'left':
+						$main_align = ' col-md-push-3';
+						$side_align = ' col-md-pull-9';
+						break;
+					case 'right':
+						$main_align = '';
+						$side_align = '';
+						break;
+				}
+			?>
+			<!-- Blog Sidebar -->
+            <div class="col-md-3<?php echo $side_align; ?>">
                 <div class="headline-v2 bg-color-light"><h2>Trending</h2></div>
                 <!-- Trending -->
                 <ul class="list-unstyled blog-trending margin-bottom-50">
@@ -99,5 +111,5 @@
                     </li>                        
                 </ul>
                 <!-- End Photostream -->
-				<?php */ ?>
-            </div>         
+            </div>
+            <!-- End Blog Sidebar -->

@@ -1,8 +1,11 @@
-<?php get_header(); ?>
+<?php
+get_header();
+if(have_posts()) the_post();
 
-	<?php
+		get_template_part('parts/loop', 'title');
+
 		$template = get_field('portfolio_item_template', 'option');
 		get_template_part('parts/portfolio/portfolio', $template);
-	?>
 
-<?php get_footer(); ?>
+get_footer();
+?>

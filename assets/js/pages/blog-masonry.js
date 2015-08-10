@@ -2,7 +2,7 @@
  * Base js functions
  */
 
-$(document).ready(function(){
+jQuery(document).ready(function($){
     var $container = $('.grid-boxes');
 
     var gutter = 30;
