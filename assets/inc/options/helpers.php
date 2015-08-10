@@ -176,7 +176,15 @@ function ocp_video_id($url) {
  * return query args
  */
 function portfolio_query() {
-	$args = array('post_type' => 'portfolio', 'posts_per_page' => -1);
+	$args = array('post_type' => 'portfolio');
+	if(is_page_template('page-templates/portfolio.php')) {
+		$args['posts_per_page'] = -1;
+	}
+	if(is_single() && get_post_type() == 'portfolio') {
+		$template = get_field('portfolio_item_template', 'option');
+		$count = $template == 'default' ? 4 : 8;
+		$args['posts_per_page'] = $count;
+	}
 	
 	return $args;
 }

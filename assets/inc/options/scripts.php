@@ -33,7 +33,8 @@ function ocp_template_scripts() {
 	wp_register_style( 'cubeportfolio', get_template_directory_uri().'/assets/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css', array(), '' );
 	wp_register_style( 'custom-cubeportfolio', get_template_directory_uri().'/assets/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css', array(), '' );
 	wp_register_script( 'cubeportfolio', get_template_directory_uri().'/assets/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js', array(), '', true );
-	
+	wp_register_style( 'sky-forms', get_template_directory_uri().'/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css', array(), '' );
+	wp_register_style( 'custom-sky-forms', get_template_directory_uri().'/assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css', array(), '' );
 
 	// widget specific
 	if(have_rows('page_widgets')) { 
@@ -80,6 +81,13 @@ function ocp_template_scripts() {
 		wp_enqueue_style( 'fancybox-pack' );
 		wp_enqueue_script( 'fancybox-pack' );
 		wp_enqueue_script( 'fancybox-custom' );
+	}
+	
+	if(is_single()) {
+		wp_enqueue_style( 'sky-forms' );
+		wp_enqueue_style( 'custom-sky-forms' );
+		if(comments_open())
+			wp_enqueue_script( 'comment-reply' );
 	}
 	
 	if(is_404()){
