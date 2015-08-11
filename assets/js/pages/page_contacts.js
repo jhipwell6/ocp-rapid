@@ -5,30 +5,33 @@ var ContactPage = function () {
     	//Basic Map
         initMap: function () {
 			var map;
-			$(document).ready(function(){
+			jQuery(document).ready(function(){
+			  var dlat = jQuery('#map').attr('data-lat'),
+				  dlng = jQuery('#map').attr('data-lng');
 			  map = new GMaps({
 				div: '#map',
 				scrollwheel: false,				
-				lat: 40.748866,
-				lng: -73.988366
+				lat: dlat,
+				lng: dlng
 			  });
 			  
 			  var marker = map.addMarker({
-				lat: 40.748866,
-				lng: -73.988366,
-	            title: 'Company, Inc.'
+				lat: dlat,
+				lng: dlng
 		       });
 			});
         },
 
         //Panorama Map
         initPanorama: function () {
-		    var panorama;
-		    $(document).ready(function(){
+		    var panorama,
+			    dlat = jQuery('#panorama').attr('data-lat'),
+				dlng = jQuery('#panorama').attr('data-lng');
+		    jQuery(document).ready(function(){
 		      panorama = GMaps.createPanorama({
 		        el: '#panorama',
-		        lat : 40.748866,
-		        lng : -73.988366
+		        lat : dlat,
+		        lng : dlng
 		      });
 		    });
 		}        

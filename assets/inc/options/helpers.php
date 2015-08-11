@@ -361,3 +361,26 @@ function the_background($name, $option = false) {
 	echo $style;
 }
 
+/*
+ * the_hours()
+ * params = $name (string)
+ * echo hours
+ */
+function the_hours($name) {
+	$value = get_field($name);
+	$hours = explode('<br />', $value);
+	foreach($hours as $li) {
+		$item = explode(':', $li);
+		echo '<li><strong>'.$item[0].':</strong> '.$item[1].'</li>';
+	}
+}
+
+/*
+ * the_map()
+ * params = $name (string), $format (string)
+ * echo address || lat || lng
+ */
+function the_map($name, $format = 'address') {
+	$value = get_field($name);
+	echo $value[$format];
+}

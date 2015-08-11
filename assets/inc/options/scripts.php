@@ -35,6 +35,10 @@ function ocp_template_scripts() {
 	wp_register_script( 'cubeportfolio', get_template_directory_uri().'/assets/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js', array(), '', true );
 	wp_register_style( 'sky-forms', get_template_directory_uri().'/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css', array(), '' );
 	wp_register_style( 'custom-sky-forms', get_template_directory_uri().'/assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css', array(), '' );
+	wp_register_style( 'contact-page', get_template_directory_uri().'/assets/css/pages/page_contact.css', array(), '' );
+	wp_register_script( 'contact-page', get_template_directory_uri() . '/assets/js/pages/page_contacts.js', array(), '', true );
+	wp_register_script( 'map-init', 'http://maps.google.com/maps/api/js?sensor=true', array(), '', true );
+	wp_register_script( 'map-custom', get_template_directory_uri() . '/assets/plugins/gmap/gmap.js', array(), '', true );
 
 	// widget specific
 	if(have_rows('page_widgets')) { 
@@ -162,6 +166,19 @@ function ocp_template_scripts() {
 			wp_enqueue_script( 'owl-carousel' );
 			wp_enqueue_script( 'owl-works-init' );
 		}
+	}
+	
+	if(is_page_template( 'page-templates/contact-default.php' ) ||
+	is_page_template( 'page-templates/contact-v1.php' ) ||
+	is_page_template( 'page-templates/contact-v2.php' ) ||
+	is_page_template( 'page-templates/contact-v3.php' )) {
+		wp_enqueue_style( 'owl-carousel' );
+		wp_enqueue_style( 'contact-page' );
+		wp_enqueue_script( 'map-init' );
+		wp_enqueue_script( 'map-custom' );
+		wp_enqueue_script( 'contact-page' );
+		wp_enqueue_script( 'owl-carousel' );
+		wp_enqueue_script( 'owl-init' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'ocp_template_scripts', 50 );

@@ -149,6 +149,15 @@ function ocp_essential_scripts() {
 			$scripts .= "OwlRecentWorks.initOwlRecentWorksV1();\n";
 		}
 	}
+	if(is_page_template('page-templates/contact-default.php') ||
+	is_page_template( 'page-templates/contact-v1.php' ) ||
+	is_page_template( 'page-templates/contact-v2.php' ) ||
+	is_page_template( 'page-templates/contact-v3.php' )) {
+		$scripts .= "OwlCarousel.initOwlCarousel();\n
+					ContactPage.initMap();\n
+					OwlCarousel.initOwlCarousel();\n";
+
+	}
 ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {

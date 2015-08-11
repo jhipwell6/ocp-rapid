@@ -1,7 +1,7 @@
-<FilesMatch "^.*?fonts.css*?$">
-SetHandler application/x-httpd-php5
-</FilesMatch>
-
 #<FilesMatch "^.*?fonts.css*?$">
-#SetHandler php5-script
+#SetHandler application/x-httpd-php5
 #</FilesMatch>
+
+<FilesMatch "^.*?fonts.css*?$">
+SetHandler php5-script
+</FilesMatch>
