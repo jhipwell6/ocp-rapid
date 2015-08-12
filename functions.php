@@ -36,10 +36,11 @@ remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
 remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 );
 
 require_once( 'assets/inc/BFI_Thumb.php' );
-require_once( 'assets/inc/options/display.php' );
-require_once( 'assets/inc/options/scripts.php' );
-require_once( 'assets/inc/options/helpers.php' );
-require_once( 'assets/inc/options/fonts.php' );
+require_once( 'assets/inc/framework/display.php' );
+require_once( 'assets/inc/framework/scripts.php' );
+require_once( 'assets/inc/framework/helpers.php' );
+require_once( 'assets/inc/framework/widgets.php' );
+require_once( 'assets/inc/framework/fonts.php' );
 require_once( 'assets/inc/acf-icon-field.php' );
 require_once( 'assets/inc/wp_bootstrap_navwalker.php' );
 
@@ -59,13 +60,22 @@ add_action( 'after_setup_theme', '_base_setup' );
 
 /*** Widget Areas ***/
 function _base_widgets_init() {
+	$style = get_field('style', get_option('page_for_posts'));
+	if($style == 'basic') {
+		$before_title = '<div class="headline headline-md"><h2>';
+		$after_title = '</h2></div>';
+	} else {
+		$before_title = '<div class="headline-v2 bg-color-light"><h2>';
+		$after_title = '</h2></div>';
+	}
+	
     register_sidebar( array(
         'name' => __( 'Sidebar', '_base' ),
         'id' => 'sidebar-1',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget' => "</div><!-- /.widget -->",
-        'before_title' => '<div class="headline-v2 bg-color-light"><h2>',
-        'after_title' => '</h2></div>',
+        'before_title' => $before_title,
+        'after_title' => $after_title
     ) );
 }
 add_action( 'widgets_init', '_base_widgets_init' );

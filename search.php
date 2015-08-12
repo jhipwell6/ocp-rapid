@@ -4,18 +4,7 @@ get_header();
 $template = get_field('search_template', 'option');
 ?>
 
-	<!--=== Breadcrumbs ===-->
-    <div class="breadcrumbs breadcrumbs-dark">
-        <div class="container">
-            <h1 class="pull-left">Search Results</h1>
-            <ul class="pull-right breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="">Page</a></li>
-                <li class="active">Search results</li>
-            </ul>
-        </div>
-    </div>
-    <!--=== End Breadcrumbs ===-->
+	<?php get_template_part('parts/loop', 'title'); ?>
     
     <!--=== Search Block Version 2 ===-->
     <form class="search-block-v2">

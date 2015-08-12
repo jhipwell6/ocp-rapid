@@ -2,11 +2,9 @@
 				$sidebar = get_field('sidebar', get_option('page_for_posts'));
 				switch($sidebar) {
 					case 'left':
-						$main_align = ' col-md-push-3';
 						$side_align = ' col-md-pull-9';
 						break;
 					case 'right':
-						$main_align = '';
 						$side_align = '';
 						break;
 				}

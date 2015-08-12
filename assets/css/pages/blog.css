@@ -1,24 +1,24 @@
 /*Blog Large
 ------------------------------------*/
 /*Blog Page*/
-.blog h2 {
+div.blog h2 {
 	color: #555;
 	font-size: 21px;
 	line-height: 32px;
 	margin-bottom: 10px;
 }
 
-.blog h2 a {
+div.blog h2 a {
 	color: #585f69;
 	line-height: 32px;
 }
 
-.blog h2 a:hover {
+div.blog h2 a:hover {
 	color: #72c02c;
 	text-decoration: none;
 }
 
-.blog .blog-img { 
+div.blog .blog-img { 
 	margin: 20px 0;
 }
 

@@ -62,14 +62,14 @@
 			modal += 		opts;
 			modal +=	'</div>';
 			
-		jQuery('#post-body').append(modal);
+		jQuery('#wpbody').append(modal);
 	};
 	
 	function addIconClass(el) {
 		self.parent.tb_remove();
 		var iconClass = jQuery(el).data('icon'),
-			iconEl = jQuery('#post-body').find('.insert-icon').parent().find('i'),
-			inputEl = jQuery('#post-body').find('.insert-icon').parent().find('input');
+			iconEl = jQuery('#wpbody').find('.insert-icon').parent().find('i'),
+			inputEl = jQuery('#wpbody').find('.insert-icon').parent().find('input');
 			
 		iconEl.removeClass().addClass('fa fa-fw '+iconClass);
 		inputEl.val(iconClass);
