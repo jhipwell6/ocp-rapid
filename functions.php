@@ -46,7 +46,7 @@ require_once( 'assets/inc/wp_bootstrap_navwalker.php' );
 
 if ( ! function_exists( '_base_setup' ) ):
 function _base_setup() {
-	add_filter('show_admin_bar', '__return_false');
+	/*add_filter('show_admin_bar', '__return_false');*/
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'post-thumbnails' );
 	register_nav_menus( array(
@@ -73,7 +73,7 @@ function _base_widgets_init() {
         'name' => __( 'Sidebar', '_base' ),
         'id' => 'sidebar-1',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget' => "</div><!-- /.widget -->",
+        'after_widget' => '</div><!-- /.widget -->',
         'before_title' => $before_title,
         'after_title' => $after_title
     ) );
