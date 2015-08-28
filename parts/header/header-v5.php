@@ -49,6 +49,7 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-responsive-collapse">
+					<?php if ( class_exists( 'WooCommerce' ) ) : ?>
                     <!-- Badge -->
                     <ul class="list-inline shop-badge badge-lists badge-icons pull-right">
                         <li>
@@ -73,6 +74,7 @@
                         </li>
                     </ul>
                     <!-- End Badge -->
+					<?php endif; ?>
 
 					<?php
 						wp_nav_menu(array( 
