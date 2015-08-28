@@ -77,10 +77,11 @@
 					<?php endif; ?>
 
 					<?php
+						$navbar_pos = class_exists( 'WooCommerce' ) ? '' : ' navbar-right';
 						wp_nav_menu(array( 
 							'menu' => 'Primary',
 							'container' => false,
-							'items_wrap' => '<ul id="%1$s" class="nav navbar-nav">%3$s'.$search.'</ul>',
+							'items_wrap' => '<ul id="%1$s" class="nav navbar-nav'.$navbar_pos.'">%3$s'.$search.'</ul>',
 							'walker' => new wp_bootstrap_navwalker()));
 					?>
                 </div><!--/navbar-collapse-->

@@ -43,6 +43,8 @@ function ocp_template_scripts() {
 	wp_register_script( 'map-custom', get_template_directory_uri() . '/assets/plugins/gmap/gmap.js', array(), '', true );
 	wp_register_style( 'flexslider', get_template_directory_uri().'/assets/plugins/flexslider/flexslider.css', array(), '' );
 	wp_register_script( 'jquery-parallax', get_template_directory_uri() . '/assets/plugins/jquery.parallax.js', array(), '', true );
+	wp_register_style( 'one-page', get_template_directory_uri().'/assets/css/pages/page_one.css', array(), '' );
+	
 
 	// widget specific
 	if(have_rows('page_widgets')) { 
@@ -94,6 +96,10 @@ function ocp_template_scripts() {
 		wp_enqueue_style( 'fancybox-pack' );
 		wp_enqueue_script( 'fancybox-pack' );
 		wp_enqueue_script( 'fancybox-custom' );
+	}
+	
+	if(is_page_template('page-templates/home-amazing.php')) {
+		wp_enqueue_script( 'one-page' );
 	}
 	
 	if(is_single()) {
