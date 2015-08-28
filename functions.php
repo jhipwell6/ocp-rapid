@@ -169,6 +169,11 @@ function ocp_essential_scripts() {
 					OwlCarousel.initOwlCarousel();\n";
 
 	}
+	
+	if(is_page_template('page-templates/services-default.php')) {
+		$scripts .= "App.initCounter();\n
+					App.initParallaxBg();\n";
+	}
 ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {

@@ -43,7 +43,7 @@
                         <span class="fa fa-bars"></span>
                     </button>
                     <a class="navbar-brand brand-style" href="<?php echo home_url(); ?>">
-                        <img id="logo-header" src="<?php the_field('site_logo', 'option'); ?>" width="85" height="32" alt="Logo">
+                        <img id="logo-header" src="<?php the_field('site_logo', 'option'); ?>" alt="Logo">
                     </a>
                 </div>
 

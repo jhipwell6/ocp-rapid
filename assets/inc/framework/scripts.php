@@ -41,6 +41,8 @@ function ocp_template_scripts() {
 	wp_register_script( 'contact-page', get_template_directory_uri() . '/assets/js/pages/page_contacts.js', array(), '', true );
 	wp_register_script( 'map-init', 'http://maps.google.com/maps/api/js?sensor=true', array(), '', true );
 	wp_register_script( 'map-custom', get_template_directory_uri() . '/assets/plugins/gmap/gmap.js', array(), '', true );
+	wp_register_style( 'flexslider', get_template_directory_uri().'/assets/plugins/flexslider/flexslider.css', array(), '' );
+	wp_register_script( 'jquery-parallax', get_template_directory_uri() . '/assets/plugins/jquery.parallax.js', array(), '', true );
 
 	// widget specific
 	if(have_rows('page_widgets')) { 
@@ -186,6 +188,13 @@ function ocp_template_scripts() {
 		wp_enqueue_script( 'contact-page' );
 		wp_enqueue_script( 'owl-carousel' );
 		wp_enqueue_script( 'owl-init' );
+	}
+	
+	if(is_page_template( 'page-templates/services-default.php' )) {
+		wp_enqueue_style( 'flexslider' );
+		wp_enqueue_script( 'jquery-parallax' );
+		wp_enqueue_script( 'waypoints' );
+		wp_enqueue_script( 'counterup' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'ocp_template_scripts', 50 );

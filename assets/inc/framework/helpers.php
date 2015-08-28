@@ -93,6 +93,7 @@ function get_col_x($arr, $size) {
 			$col = 'col-'.$sz.'-4';
 			break;
 		case 4:
+		case 8:
 			$col = 'col-'.$sz.'-3';
 			break;
 		case 5:
@@ -102,7 +103,6 @@ function get_col_x($arr, $size) {
 			$col = 'col-'.$sz.'-4';
 			break;
 		case 7:
-		case 8:
 			$col = 'col-'.$sz.'-2';
 			break;
 		case 9:
