@@ -55,7 +55,16 @@ function ocp_display_options(){
 	if(in_array($header_version, $v6_alt))
 		$header_version = 'v6';
 	
+	if(isset($_GET['h'])) {
+		$header_version = $_GET['h'];
+	}
+	
 	$footer_version = get_field('footer', 'option');
+	
+	if(isset($_GET['f'])) {
+		$footer_version = $_GET['f'];
+	}
+	
 	wp_enqueue_style( 'header', get_template_directory_uri().'/assets/css/headers/header-'.$header_version.'.css', array(), '');
 	wp_enqueue_style( 'footer', get_template_directory_uri().'/assets/css/footers/footer-'.$footer_version.'.css', array(), '');
 }
@@ -69,12 +78,19 @@ function ocp_display_header() {
 	if(in_array($header_version, $v6_alt))
 		$header_version = 'v6';
 	
+	if(isset($_GET['h'])) {
+		$header_version = $_GET['h'];
+	}
+	
 	get_template_part('parts/header/header', $header_version);
 }
 add_action('ocp_header', 'ocp_display_header');
 
 function ocp_header_class() {
 	$header_version = get_field('header', 'option');
+	if(isset($_GET['h'])) {
+		$header_version = $_GET['h'];
+	}
 	if($header_version == 'v6') {
 		$header_class = '';
 	} elseif($header_version == 'v7') {
@@ -102,6 +118,10 @@ function ocp_header_class() {
 function ocp_body_header_class($classes) {
 	$header_version = get_field('header', 'option');
 	
+	if(isset($_GET['h'])) {
+		$header_version = $_GET['h'];
+	}
+	
 	if($header_version == 'v10' || $header_version == 'v11')
 		$classes[] = 'header-fixed-space';
 	
@@ -120,6 +140,11 @@ add_filter('body_class', 'ocp_body_header_class');
 /* output footer file part */
 function ocp_display_footer() {
 	$footer_version = get_field('footer', 'option');
+	
+	if(isset($_GET['f'])) {
+		$footer_version = $_GET['f'];
+	}
+	
 	get_template_part('parts/footer/footer', $footer_version);
 }
 add_action('ocp_footer', 'ocp_display_footer');
@@ -127,6 +152,9 @@ add_action('ocp_footer', 'ocp_display_footer');
 /* output footer heading class */
 function ocp_footer_heading($title) {
 	$footer_version = get_field('footer', 'option');
+	if(isset($_GET['f'])) {
+		$footer_version = $_GET['f'];
+	}
 	$before_title = '';
 	$after_title = '';
 	switch($footer_version) {

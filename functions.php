@@ -182,7 +182,7 @@ function ocp_essential_scripts() {
 	</script>
 	<?php
 }
-add_action('wp_footer', 'ocp_essential_scripts');
+add_action('wp_footer', 'ocp_essential_scripts', 1);
 
 function remove_src_version( $src ) {
 	if ( strpos( $src, 'ver=' ) )
