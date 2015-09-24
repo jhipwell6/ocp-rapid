@@ -44,7 +44,8 @@ function ocp_template_scripts() {
 	wp_register_style( 'flexslider', get_template_directory_uri().'/assets/plugins/flexslider/flexslider.css', array(), '' );
 	wp_register_script( 'jquery-parallax', get_template_directory_uri() . '/assets/plugins/jquery.parallax.js', array(), '', true );
 	wp_register_style( 'one-page', get_template_directory_uri().'/assets/css/pages/page_one.css', array(), '' );
-	
+	wp_register_style( 'skin-dark', get_template_directory_uri().'/assets/css/themes/dark.css', array(), '' );
+	wp_register_style( 'skin-theme-dark', get_template_directory_uri().'/assets/css/theme-skins/dark.css', array(), '' );	
 
 	// widget specific
 	if(have_rows('page_widgets')) { 
@@ -76,6 +77,12 @@ function ocp_template_scripts() {
 				wp_enqueue_script( 'page-portfolio' );
 			}
 		}
+	}
+	
+	$skin = get_field('skin', 'option');
+	if($skin == 'dark') {
+		wp_enqueue_style( 'skin-dark' );
+		wp_enqueue_style( 'skin-theme-dark' );
 	}
 	
 	// template specific	
@@ -139,7 +146,7 @@ function ocp_template_scripts() {
 	}
 	
 	if(is_page_template( 'page-templates/about-v1.php' )) {
-		wp_enqueue_style( 'fancy-pack' );
+		wp_enqueue_style( 'fancybox-pack' );
 		wp_enqueue_style( 'owl-carousel' );
 		wp_enqueue_script( 'jquery-appear' );
 		wp_enqueue_script( 'owl-carousel' );

@@ -200,3 +200,13 @@ function ocp_footer_menu($menu = 'Footer', $before_link = '', $after_link = '', 
 		$i++; }
 	}
 }
+
+/* dark theme mode */
+function ocp_theme_dark($classes) {
+	$skin = get_field('skin', 'option');
+	if($skin == 'dark') {
+		$classes[] = 'dark';
+	}
+	return $classes;
+}
+add_filter('body_class', 'ocp_theme_dark');

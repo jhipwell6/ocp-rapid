@@ -1630,3 +1630,13 @@ i.icon-bg-u {
 	color: <?php echo $primary_color; ?>
 }
 
+/* WooCommerce
+------------------------------------*/
+.woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt {
+	background-color: <?php echo $primary_color; ?>
+}
+.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover,
+.woocommerce #respond input#submit.alt:focus, .woocommerce a.button.alt:focus, .woocommerce button.button.alt:focus, .woocommerce input.button.alt:focus {
+	background-color: <?php echo $darker_color; ?>
+}
+

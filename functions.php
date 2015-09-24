@@ -43,6 +43,9 @@ require_once( 'assets/inc/framework/widgets.php' );
 require_once( 'assets/inc/framework/fonts.php' );
 require_once( 'assets/inc/acf-icon-field.php' );
 require_once( 'assets/inc/wp_bootstrap_navwalker.php' );
+if ( class_exists( 'WooCommerce' ) ) {
+	require_once( 'assets/inc/framework/woocommerce-helpers.php' );
+}
 
 if ( ! function_exists( '_base_setup' ) ):
 function _base_setup() {
