@@ -6,9 +6,11 @@
 		$blog_page = get_option('page_for_posts');
 		$title = get_the_title($blog_page);
 	}
-	if(is_shop()) {
-		$shop_page = get_option('woocommerce_shop_page_id'); 
-		$title = get_the_title($shop_page);
+	if(class_exists( 'WooCommerce' )) {
+		if(is_shop()) {
+			$shop_page = get_option('woocommerce_shop_page_id'); 
+			$title = get_the_title($shop_page);
+		}
 	}
 	if($page_title == 'default') :
 ?>

@@ -207,6 +207,11 @@ function ie8_support(){
 <?php
 }
 
+function ocp_google_analytics() {
+	the_field('tracking_code', 'option');
+}
+add_action('wp_head', 'ocp_google_analytics', 99);
+
 add_filter( 'comments_open', 'ocp_comments_open', 10, 2 );
 function ocp_comments_open( $open, $post_id ) {
 	$post = get_post( $post_id );
@@ -257,8 +262,6 @@ function ocp_rapid_comment($comment, $args, $depth) {
 	<?php endif; ?>
 <?php
 }
-
-
 
 function ocp_post_tax($post_id, $taxonomy){
     $terms = get_the_terms( $post_id, $taxonomy );
